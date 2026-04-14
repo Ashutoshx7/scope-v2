@@ -1,0 +1,87 @@
+/* App-level overrides and layout utilities */
+
+#root {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* Electron title bar drag region (macOS) */
+.titlebar-drag {
+	-webkit-app-region: drag;
+}
+
+.titlebar-no-drag {
+	-webkit-app-region: no-drag;
+}
+
+/* Editor layout */
+.editor-layout {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 1fr auto;
+	height: 100vh;
+	background: var(--surface-base);
+}
+
+.editor-header {
+	grid-column: 1 / -1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-2) var(--space-4);
+	background: var(--surface-raised);
+	border-bottom: 1px solid var(--border-subtle);
+	z-index: var(--z-raised);
+}
+
+.editor-main {
+	display: flex;
+	overflow: hidden;
+}
+
+.editor-preview {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-4);
+	background: var(--surface-sunken);
+	position: relative;
+}
+
+.editor-sidebar {
+	width: 320px;
+	min-width: 280px;
+	max-width: 400px;
+	background: var(--surface-raised);
+	border-left: 1px solid var(--border-subtle);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.editor-timeline {
+	grid-column: 1 / -1;
+	height: 200px;
+	min-height: 160px;
+	background: var(--surface-raised);
+	border-top: 1px solid var(--border-subtle);
+}
+
+/* HUD overlay layout */
+.hud-layout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	height: 100vh;
+	padding-bottom: var(--space-3);
+}
+
+/* Source selector layout */
+.source-selector-layout {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: var(--space-4);
+}
