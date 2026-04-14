@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>OpenScreen Offscreen Recorder</title>
+</head>
+<body>
+	<!--
+		This page runs in a hidden offscreen context to handle
+		MediaRecorder-based recording. The service worker sends
+		stream IDs here, and this page captures & encodes them.
+	-->
+	<script type="module" src="offscreen.js"></script>
+</body>
+</html>

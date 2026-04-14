@@ -1,0 +1,342 @@
+/* ============================================================================
+   Side Panel Styles — In-browser video editor
+   ============================================================================ */
+
+:root {
+	--sp-bg: #0d0b14;
+	--sp-surface: #1a1625;
+	--sp-surface-raised: #231f30;
+	--sp-border: rgba(255, 255, 255, 0.06);
+	--sp-text: #e8e4f0;
+	--sp-text-secondary: #9992ab;
+	--sp-text-tertiary: #6b6480;
+	--sp-primary: #6c5ce7;
+	--sp-primary-light: #a29bfe;
+	--sp-accent: #00cec9;
+	--sp-radius: 10px;
+	--sp-radius-sm: 6px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--sp-bg);
+	color: var(--sp-text);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 13px;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
+
+.sp-layout {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+/* Header */
+.sp-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 14px;
+	border-bottom: 1px solid var(--sp-border);
+	flex-shrink: 0;
+}
+
+.sp-logo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--sp-primary-light);
+}
+
+/* Video Preview */
+.sp-preview {
+	aspect-ratio: 16 / 9;
+	background: var(--sp-surface);
+	border-radius: var(--sp-radius);
+	margin: 10px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.sp-video {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.sp-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	color: var(--sp-text-tertiary);
+	text-align: center;
+	padding: 20px;
+}
+
+.sp-empty p {
+	font-weight: 500;
+	color: var(--sp-text-secondary);
+}
+
+.sp-empty span {
+	font-size: 11px;
+}
+
+/* Playback Controls */
+.sp-controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 14px 8px;
+	flex-shrink: 0;
+}
+
+.sp-play-btn {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: none;
+	background: var(--sp-primary);
+	color: white;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.15s ease;
+	flex-shrink: 0;
+}
+
+.sp-play-btn:hover {
+	background: var(--sp-primary-light);
+	transform: scale(1.05);
+}
+
+.sp-progress-container {
+	flex: 1;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.sp-progress-bar {
+	width: 100%;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 2px;
+	overflow: hidden;
+	transition: height 0.15s ease;
+}
+
+.sp-progress-container:hover .sp-progress-bar {
+	height: 6px;
+}
+
+.sp-progress-fill {
+	height: 100%;
+	background: linear-gradient(90deg, var(--sp-primary), var(--sp-accent));
+	border-radius: 2px;
+	transition: width 50ms linear;
+}
+
+.sp-timecode {
+	font-family: "SF Mono", "Fira Code", monospace;
+	font-size: 10px;
+	color: var(--sp-text-tertiary);
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+/* Tabs */
+.sp-tabs {
+	display: flex;
+	gap: 2px;
+	padding: 0 10px;
+	border-bottom: 1px solid var(--sp-border);
+	flex-shrink: 0;
+}
+
+.sp-tab {
+	flex: 1;
+	height: 34px;
+	border: none;
+	background: transparent;
+	color: var(--sp-text-secondary);
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	transition: all 0.15s ease;
+}
+
+.sp-tab:hover {
+	color: var(--sp-text);
+}
+
+.sp-tab--active {
+	color: var(--sp-primary-light);
+	border-bottom-color: var(--sp-primary);
+}
+
+/* Tab Content */
+.sp-content {
+	flex: 1;
+	overflow-y: auto;
+	padding: 14px;
+}
+
+.sp-tab-content {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.sp-tab-content h3 {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--sp-text);
+}
+
+/* Info Rows */
+.sp-info-row {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 10px;
+	background: var(--sp-surface);
+	border-radius: var(--sp-radius-sm);
+	font-size: 12px;
+}
+
+.sp-info-row span:first-child {
+	color: var(--sp-text-secondary);
+}
+
+/* Badge */
+.sp-badge {
+	font-size: 10px;
+	font-weight: 600;
+	padding: 2px 8px;
+	border-radius: 10px;
+}
+
+.sp-badge--success {
+	background: rgba(0, 206, 201, 0.15);
+	color: var(--sp-accent);
+}
+
+/* Background Grid */
+.sp-bg-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 8px;
+}
+
+.sp-bg-swatch {
+	aspect-ratio: 16 / 10;
+	border: 2px solid transparent;
+	border-radius: var(--sp-radius-sm);
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.sp-bg-swatch:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sp-bg-swatch--active {
+	border-color: var(--sp-primary-light);
+	box-shadow: 0 0 12px rgba(108, 92, 231, 0.3);
+}
+
+/* Buttons */
+.sp-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	height: 40px;
+	border: none;
+	border-radius: var(--sp-radius);
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.sp-btn:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.sp-btn--primary {
+	background: linear-gradient(135deg, var(--sp-primary), var(--sp-accent));
+	color: white;
+}
+
+.sp-btn--primary:hover:not(:disabled) {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 16px rgba(108, 92, 231, 0.35);
+}
+
+.sp-btn--secondary {
+	background: var(--sp-surface-raised);
+	color: var(--sp-text-secondary);
+	border: 1px solid var(--sp-border);
+}
+
+.sp-btn--secondary:hover:not(:disabled) {
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--sp-text);
+}
+
+/* Export Progress */
+.sp-export-progress {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 16px 0;
+}
+
+.sp-export-bar {
+	width: 100%;
+	height: 6px;
+	background: rgba(255, 255, 255, 0.08);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.sp-export-fill {
+	height: 100%;
+	background: linear-gradient(90deg, var(--sp-primary), var(--sp-accent));
+	border-radius: 3px;
+	transition: width 100ms linear;
+}
+
+.sp-export-progress span {
+	font-family: monospace;
+	font-size: 11px;
+	color: var(--sp-text-tertiary);
+}
+
+.sp-empty-text {
+	font-size: 12px;
+	color: var(--sp-text-tertiary);
+	text-align: center;
+	padding: 16px 0;
+}

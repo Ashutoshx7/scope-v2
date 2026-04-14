@@ -1,0 +1,127 @@
+# ============================================================================
+# Release — Build & Publish desktop app + Chrome extension
+#
+# Triggered on version tags (v*). Builds production binaries for all
+# platforms and creates a GitHub Release with assets.
+# ============================================================================
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  NODE_VERSION: "22"
+
+jobs:
+  # -----------------------------------------------------------------------
+  # Test before release
+  # -----------------------------------------------------------------------
+  test:
+    name: Pre-release Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @openscreen/core run test
+
+  # -----------------------------------------------------------------------
+  # Desktop — Build for all platforms
+  # -----------------------------------------------------------------------
+  desktop:
+    name: Desktop — ${{ matrix.platform }}
+    runs-on: ${{ matrix.os }}
+    needs: test
+    strategy:
+      matrix:
+        include:
+          - platform: linux
+            os: ubuntu-latest
+            ext: AppImage
+          - platform: macos
+            os: macos-latest
+            ext: dmg
+          - platform: windows
+            os: windows-latest
+            ext: exe
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build & Package
+        run: pnpm --filter @openscreen/desktop run release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            apps/desktop/release/*.${{ matrix.ext }}
+            apps/desktop/release/*.zip
+            apps/desktop/release/*.yml
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # -----------------------------------------------------------------------
+  # Chrome Extension — Build & package
+  # -----------------------------------------------------------------------
+  extension:
+    name: Chrome Extension
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build Extension
+        run: pnpm --filter @openscreen/extension run build
+
+      - name: Package as ZIP
+        run: |
+          cd apps/extension/dist
+          zip -r ../../../openscreen-extension-${{ github.ref_name }}.zip .
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: openscreen-extension-${{ github.ref_name }}.zip
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
