@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.openscreen.app",
+  "asar": true,
+  "productName": "OpenScreen",
+  "npmRebuild": true,
+  "compression": "normal",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron",
+    "!*.png",
+    "!*.md"
+  ],
+  "extraResources": [
+    {
+      "from": "../../assets/wallpapers",
+      "to": "assets/wallpapers"
+    }
+  ],
+  "mac": {
+    "notarize": false,
+    "hardenedRuntime": true,
+    "target": [
+      { "target": "dmg", "arch": ["x64", "arm64"] }
+    ],
+    "icon": "../../assets/icons/icon.icns",
+    "artifactName": "${productName}-Mac-${arch}-${version}.${ext}",
+    "extendInfo": {
+      "NSAudioCaptureUsageDescription": "OpenScreen needs audio capture permission to record system audio.",
+      "NSMicrophoneUsageDescription": "OpenScreen needs microphone access to record voice audio.",
+      "NSCameraUsageDescription": "OpenScreen needs camera access to record webcam video."
+    }
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "icon": "../../assets/icons/png",
+    "artifactName": "${productName}-Linux-${version}.${ext}",
+    "category": "AudioVideo"
+  },
+  "win": {
+    "target": ["nsis"],
+    "icon": "../../assets/icons/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+}

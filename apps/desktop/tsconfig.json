@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "electron/**/*"],
+  "references": [
+    { "path": "../../packages/core" },
+    { "path": "../../packages/ui" }
+  ]
+}
