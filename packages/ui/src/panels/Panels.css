@@ -1,0 +1,499 @@
+/* ============================================================================
+   Shared Panel Styles — Used by all sidebar editor panels
+   ============================================================================ */
+
+/* Panel container */
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	animation: fadeIn var(--duration-normal) var(--ease-out);
+}
+
+.panel-title {
+	font-size: var(--text-md);
+	font-weight: var(--weight-semibold);
+	color: var(--text-primary);
+	margin: 0;
+}
+
+/* Sections */
+.panel-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.panel-divider {
+	height: 1px;
+	background: var(--border-subtle);
+	margin: var(--space-1) 0;
+}
+
+/* Labels */
+.panel-label {
+	display: flex;
+	align-items: center;
+	gap: var(--space-1-5);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-semibold);
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+
+.panel-sublabel {
+	font-size: var(--text-xs);
+	color: var(--text-tertiary);
+}
+
+.panel-value {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-medium);
+	color: var(--text-secondary);
+}
+
+.panel-hint {
+	font-size: 11px;
+	color: var(--text-tertiary);
+	line-height: var(--leading-relaxed);
+	margin: 0;
+}
+
+.panel-empty {
+	font-size: var(--text-xs);
+	color: var(--text-tertiary);
+	text-align: center;
+	padding: var(--space-3) 0;
+	margin: 0;
+}
+
+/* Row layout */
+.panel-row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.panel-row--between {
+	justify-content: space-between;
+}
+
+/* Tab Switcher */
+.panel-tabs {
+	display: flex;
+	gap: var(--space-1);
+	background: var(--surface-sunken);
+	border-radius: var(--radius-lg);
+	padding: 3px;
+}
+
+.panel-tab {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-1);
+	height: 30px;
+	font-size: 11px;
+	font-weight: var(--weight-medium);
+	color: var(--text-secondary);
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+}
+
+.panel-tab:hover {
+	color: var(--text-primary);
+	background: hsla(230, 20%, 20%, 0.3);
+}
+
+.panel-tab--active {
+	color: var(--text-primary);
+	background: var(--surface-raised);
+	box-shadow: var(--shadow-sm);
+}
+
+/* Grid layouts */
+.panel-grid {
+	display: grid;
+	gap: var(--space-2);
+}
+
+.panel-grid--2 {
+	grid-template-columns: 1fr 1fr;
+}
+
+.panel-grid--3 {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.panel-grid--4 {
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.panel-grid--5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+/* Colour Swatches */
+.panel-swatch {
+	aspect-ratio: 1;
+	border: 2px solid transparent;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.panel-swatch--lg {
+	aspect-ratio: 16 / 10;
+	border-radius: var(--radius-lg);
+}
+
+.panel-swatch--sm {
+	width: 28px;
+	height: 28px;
+	min-width: 28px;
+}
+
+.panel-swatch:hover {
+	transform: scale(1.05);
+	box-shadow: var(--shadow-md);
+}
+
+.panel-swatch--selected {
+	border-color: var(--color-primary-400) !important;
+	box-shadow: var(--shadow-glow-primary);
+}
+
+.panel-swatch-check {
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Presets */
+.panel-preset {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	padding: var(--space-2);
+	background: var(--surface-sunken);
+	border: 1.5px solid transparent;
+	border-radius: var(--radius-lg);
+	color: var(--text-secondary);
+	font-size: 10px;
+	font-weight: var(--weight-medium);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+}
+
+.panel-preset:hover {
+	background: hsla(230, 20%, 20%, 0.5);
+	color: var(--text-primary);
+}
+
+.panel-preset--active {
+	border-color: var(--color-primary-400);
+	background: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.08);
+	color: var(--color-primary-300);
+}
+
+/* Preset chips (radius / padding picker) */
+.panel-preset-row {
+	display: flex;
+	gap: var(--space-1);
+}
+
+.panel-preset-chip {
+	flex: 1;
+	height: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: var(--weight-semibold);
+	color: var(--text-secondary);
+	background: var(--surface-sunken);
+	border: 1.5px solid transparent;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+}
+
+.panel-preset-chip:hover {
+	background: hsla(230, 20%, 20%, 0.5);
+	color: var(--text-primary);
+}
+
+.panel-preset-chip--active {
+	border-color: var(--color-primary-400);
+	color: var(--color-primary-300);
+	background: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.08);
+}
+
+/* Tool Palette */
+.panel-tools {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--space-1);
+}
+
+.panel-tool {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 36px;
+	background: var(--surface-sunken);
+	border: 1.5px solid transparent;
+	border-radius: var(--radius-md);
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+}
+
+.panel-tool:hover {
+	background: hsla(230, 20%, 20%, 0.5);
+	color: var(--text-primary);
+}
+
+.panel-tool--active {
+	border-color: var(--color-primary-400);
+	background: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.1);
+	color: var(--color-primary-300);
+}
+
+/* List */
+.panel-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.panel-list-item {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: var(--space-1-5) var(--space-2);
+	background: var(--surface-sunken);
+	border-radius: var(--radius-md);
+	border: 1px solid transparent;
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+}
+
+.panel-list-item:hover {
+	background: hsla(230, 20%, 20%, 0.5);
+}
+
+.panel-list-item--selected {
+	border-color: var(--color-primary-400);
+	background: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.06);
+}
+
+.panel-list-icon {
+	color: var(--text-tertiary);
+	flex-shrink: 0;
+}
+
+.panel-list-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.panel-list-title {
+	display: block;
+	font-size: 11px;
+	font-weight: var(--weight-medium);
+	color: var(--text-primary);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.panel-list-subtitle {
+	display: block;
+	font-size: 10px;
+	color: var(--text-tertiary);
+}
+
+/* Mini slider (inline) */
+.panel-mini-slider {
+	width: 50px;
+	height: 4px;
+	accent-color: var(--color-primary-400);
+}
+
+/* Text inputs */
+.panel-text-input {
+	background: var(--surface-sunken);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-md);
+	padding: var(--space-1-5) var(--space-2);
+	font-size: var(--text-xs);
+	color: var(--text-primary);
+	outline: none;
+	transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.panel-text-input:focus {
+	border-color: var(--color-primary-400);
+}
+
+.panel-text-input--mono {
+	font-family: var(--font-mono);
+}
+
+.panel-text-input--sm {
+	padding: var(--space-1) var(--space-1-5);
+	font-size: 11px;
+	width: 100%;
+}
+
+/* Fields */
+.panel-field {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.panel-field label {
+	font-size: 10px;
+	font-weight: var(--weight-medium);
+	color: var(--text-tertiary);
+	text-transform: uppercase;
+}
+
+/* Colour picker */
+.panel-color-input {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.panel-color-picker {
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: var(--radius-md);
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+}
+
+.panel-color-picker::-webkit-color-swatch-wrapper {
+	padding: 2px;
+}
+
+.panel-color-picker::-webkit-color-swatch {
+	border: none;
+	border-radius: var(--radius-sm);
+}
+
+/* Upload Zone */
+.panel-upload-zone {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	padding: var(--space-6) var(--space-4);
+	border: 2px dashed var(--border-subtle);
+	border-radius: var(--radius-xl);
+	color: var(--text-tertiary);
+	font-size: var(--text-xs);
+	cursor: pointer;
+	transition: all var(--duration-fast) var(--ease-out);
+	background: transparent;
+}
+
+.panel-upload-zone:hover {
+	border-color: var(--color-primary-400);
+	background: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.04);
+}
+
+.panel-upload-zone--sm {
+	padding: var(--space-4) var(--space-3);
+}
+
+.panel-upload-hint {
+	font-size: 10px;
+	color: var(--text-quaternary);
+}
+
+/* Empty state */
+.panel-empty-state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-3);
+	padding: var(--space-8) var(--space-4);
+	color: var(--text-tertiary);
+	text-align: center;
+}
+
+.panel-empty-state p {
+	font-size: var(--text-sm);
+	margin: 0;
+}
+
+/* Audio-specific */
+.panel-audio-track {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: var(--space-1-5) var(--space-2);
+	background: var(--surface-sunken);
+	border-radius: var(--radius-md);
+}
+
+.panel-mute-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-sm);
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: color var(--duration-fast) var(--ease-out);
+	flex-shrink: 0;
+}
+
+.panel-mute-btn:hover {
+	color: var(--text-primary);
+}
+
+.panel-mute-btn--muted {
+	color: var(--color-error-400);
+}
+
+.panel-audio-label {
+	font-size: 11px;
+	font-weight: var(--weight-medium);
+	color: var(--text-primary);
+	white-space: nowrap;
+	min-width: 50px;
+}
+
+.panel-audio-slider {
+	flex: 1;
+	min-width: 0;
+}
+
+.panel-audio-value {
+	min-width: 32px;
+	text-align: right;
+}

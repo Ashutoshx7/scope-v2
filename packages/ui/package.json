@@ -1,0 +1,29 @@
+{
+  "name": "@openscreen/ui",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/design-system/index.css",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@openscreen/core": "workspace:*",
+    "lucide-react": "^0.545.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "vitest": "^3.0.5"
+  }
+}

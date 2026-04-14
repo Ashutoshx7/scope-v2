@@ -1,0 +1,223 @@
+/* ============================================================================
+   Timeline Styles
+   ============================================================================ */
+
+/* Editor Container */
+.tl-editor {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	background: var(--surface-raised);
+}
+
+/* Ruler */
+.tl-ruler-container {
+	display: flex;
+	height: 28px;
+	border-bottom: 1px solid var(--border-subtle);
+	flex-shrink: 0;
+}
+
+.tl-ruler {
+	flex: 1;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.tl-ruler-marker {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tl-ruler-label {
+	font-family: var(--font-mono);
+	font-size: 9px;
+	font-weight: var(--weight-medium);
+	color: var(--text-tertiary);
+	line-height: 1;
+	padding-top: 4px;
+}
+
+.tl-ruler-tick {
+	width: 1px;
+	flex: 1;
+	background: var(--border-subtle);
+}
+
+.tl-ruler-playhead {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 1px;
+	z-index: 10;
+	pointer-events: none;
+}
+
+.tl-ruler-playhead-head {
+	width: 10px;
+	height: 10px;
+	margin-left: -5px;
+	background: var(--color-primary-400);
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Waveform */
+.tl-waveform-container {
+	display: flex;
+	border-bottom: 1px solid var(--border-subtle);
+	flex-shrink: 0;
+}
+
+.tl-waveform {
+	flex: 1;
+	overflow: hidden;
+	background: var(--surface-sunken);
+}
+
+.tl-waveform-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.tl-waveform-bar {
+	fill: hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.35);
+}
+
+/* Tracks Container */
+.tl-tracks {
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* Individual Track */
+.tl-track {
+	display: flex;
+	border-bottom: 1px solid var(--border-subtle);
+	flex-shrink: 0;
+}
+
+.tl-track-label {
+	width: 72px;
+	min-width: 72px;
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+	padding: 0 var(--space-2);
+	background: var(--surface-raised);
+	border-right: 1px solid var(--border-subtle);
+	overflow: hidden;
+}
+
+.tl-track-icon {
+	display: flex;
+	align-items: center;
+	color: var(--text-tertiary);
+	flex-shrink: 0;
+}
+
+.tl-track-label-text {
+	font-size: 9px;
+	font-weight: var(--weight-semibold);
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Track Body */
+.tl-track-body {
+	flex: 1;
+	position: relative;
+	background: var(--surface-sunken);
+	overflow: hidden;
+	cursor: crosshair;
+}
+
+.tl-track-body--dragging {
+	cursor: grabbing;
+}
+
+/* Region */
+.tl-region {
+	position: absolute;
+	top: 3px;
+	bottom: 3px;
+	border-radius: 4px;
+	cursor: grab;
+	transition: border-color var(--duration-fast) var(--ease-out);
+	border: 1.5px solid transparent;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.tl-region:hover {
+	filter: brightness(1.15);
+}
+
+.tl-region--selected {
+	border-color: white !important;
+	box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+	z-index: 5;
+}
+
+.tl-region--creating {
+	opacity: 0.5;
+	pointer-events: none;
+	border: 1px dashed rgba(255, 255, 255, 0.4);
+}
+
+.tl-region-label {
+	font-size: 8px;
+	font-weight: var(--weight-semibold);
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	pointer-events: none;
+}
+
+/* Resize Handles */
+.tl-region-handle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 6px;
+	cursor: col-resize;
+	z-index: 2;
+}
+
+.tl-region-handle--start {
+	left: 0;
+}
+
+.tl-region-handle--end {
+	right: 0;
+}
+
+.tl-region-handle:hover {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+/* Playhead Line */
+.tl-playhead {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 1.5px;
+	background: var(--color-primary-400);
+	z-index: 10;
+	pointer-events: none;
+	box-shadow: 0 0 6px hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.4);
+}

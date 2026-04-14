@@ -1,0 +1,193 @@
+/* ============================================================================
+   OpenScreen v2 — Glassmorphism System
+   
+   Premium glass surfaces with depth, blur, and glow effects.
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   Glass Panel — Primary container with frosted glass effect
+   --------------------------------------------------------------------------- */
+
+.glass-panel {
+	background: var(--glass-bg);
+	backdrop-filter: blur(var(--glass-blur));
+	-webkit-backdrop-filter: blur(var(--glass-blur));
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-md);
+	position: relative;
+	overflow: hidden;
+}
+
+/* Inner highlight — subtle top-edge glow */
+.glass-panel::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: linear-gradient(
+		180deg,
+		var(--glass-highlight) 0%,
+		transparent 40%
+	);
+	pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Panel Variants
+   --------------------------------------------------------------------------- */
+
+.glass-panel--heavy {
+	background: var(--glass-bg-heavy);
+	backdrop-filter: blur(var(--glass-blur-heavy));
+	-webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+}
+
+.glass-panel--floating {
+	box-shadow: var(--shadow-xl);
+}
+
+.glass-panel--interactive {
+	transition:
+		border-color var(--duration-normal) var(--ease-out),
+		box-shadow var(--duration-normal) var(--ease-out),
+		transform var(--duration-fast) var(--ease-out);
+}
+
+.glass-panel--interactive:hover {
+	border-color: hsla(230, 30%, 40%, 0.5);
+	box-shadow: var(--shadow-lg);
+}
+
+.glass-panel--interactive:active {
+	transform: scale(0.995);
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Card — Smaller, elevated surface
+   --------------------------------------------------------------------------- */
+
+.glass-card {
+	background: var(--glass-bg);
+	backdrop-filter: blur(var(--glass-blur));
+	-webkit-backdrop-filter: blur(var(--glass-blur));
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+	padding: var(--space-4);
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Surface — Subtle background with no border
+   --------------------------------------------------------------------------- */
+
+.glass-surface {
+	background: var(--glass-bg);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Toolbar — Horizontal bar with glass effect
+   --------------------------------------------------------------------------- */
+
+.glass-toolbar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	background: var(--glass-bg-heavy);
+	backdrop-filter: blur(var(--glass-blur));
+	-webkit-backdrop-filter: blur(var(--glass-blur));
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-xl);
+	padding: var(--space-1-5) var(--space-3);
+	box-shadow: var(--shadow-lg);
+}
+
+/* ---------------------------------------------------------------------------
+   Glow Effects
+   --------------------------------------------------------------------------- */
+
+.glow-primary {
+	box-shadow: var(--shadow-glow-primary);
+}
+
+.glow-accent {
+	box-shadow: var(--shadow-glow-accent);
+}
+
+.glow-danger {
+	box-shadow: var(--shadow-glow-danger);
+}
+
+/* Ambient glow behind elements — use as a sibling */
+.ambient-glow {
+	position: absolute;
+	width: 120%;
+	height: 120%;
+	top: -10%;
+	left: -10%;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		hsla(var(--color-primary-h), var(--color-primary-s), 52%, 0.08) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+	z-index: -1;
+}
+
+/* ---------------------------------------------------------------------------
+   Frosted Overlay — Full-screen backdrop
+   --------------------------------------------------------------------------- */
+
+.frosted-overlay {
+	position: fixed;
+	inset: 0;
+	background: hsla(230, 25%, 7%, 0.65);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	z-index: var(--z-overlay);
+}
+
+/* ---------------------------------------------------------------------------
+   Gradient Border — Animated gradient border effect
+   --------------------------------------------------------------------------- */
+
+.gradient-border {
+	position: relative;
+	background: var(--surface-raised);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+.gradient-border::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	padding: 1px;
+	border-radius: inherit;
+	background: linear-gradient(
+		135deg,
+		var(--color-primary-400),
+		var(--color-accent-400),
+		var(--color-primary-400)
+	);
+	background-size: 200% 200%;
+	animation: gradient-rotate 4s ease infinite;
+	mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	mask-composite: exclude;
+	-webkit-mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	pointer-events: none;
+}
+
+@keyframes gradient-rotate {
+	0%, 100% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+}

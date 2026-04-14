@@ -1,0 +1,303 @@
+/* ============================================================================
+   OpenScreen v2 — Animations & Micro-interactions
+   
+   Spring-based, performant CSS animations for a lively UI.
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   Entry Animations
+   --------------------------------------------------------------------------- */
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes fade-out {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in-down {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in-scale {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-in-bottom {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Scale Animations
+   --------------------------------------------------------------------------- */
+
+@keyframes scale-in {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes scale-bounce {
+	0% {
+		transform: scale(0.85);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(1.03);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes pop {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.08); }
+	100% { transform: scale(1); }
+}
+
+/* ---------------------------------------------------------------------------
+   Continuous Animations
+   --------------------------------------------------------------------------- */
+
+@keyframes pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.5; }
+}
+
+@keyframes pulse-ring {
+	0% {
+		transform: scale(0.8);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(2.4);
+		opacity: 0;
+	}
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+	0% { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+
+@keyframes recording-blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.3; }
+}
+
+/* ---------------------------------------------------------------------------
+   Utility Classes
+   --------------------------------------------------------------------------- */
+
+.animate-fade-in {
+	animation: fade-in var(--duration-normal) var(--ease-out) both;
+}
+
+.animate-fade-in-up {
+	animation: fade-in-up var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-fade-in-down {
+	animation: fade-in-down var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-fade-in-scale {
+	animation: fade-in-scale var(--duration-slow) var(--ease-spring) both;
+}
+
+.animate-scale-bounce {
+	animation: scale-bounce var(--duration-slower) var(--ease-spring) both;
+}
+
+.animate-slide-in-right {
+	animation: slide-in-right var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-slide-in-left {
+	animation: slide-in-left var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-slide-in-bottom {
+	animation: slide-in-bottom var(--duration-slower) var(--ease-spring) both;
+}
+
+.animate-pulse {
+	animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+.animate-spin {
+	animation: spin 1s linear infinite;
+}
+
+.animate-pop {
+	animation: pop var(--duration-normal) var(--ease-spring) both;
+}
+
+/* Staggered animation delay helpers */
+.delay-1 { animation-delay: 50ms; }
+.delay-2 { animation-delay: 100ms; }
+.delay-3 { animation-delay: 150ms; }
+.delay-4 { animation-delay: 200ms; }
+.delay-5 { animation-delay: 250ms; }
+
+/* ---------------------------------------------------------------------------
+   Recording Indicator
+   --------------------------------------------------------------------------- */
+
+.recording-dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: var(--color-recording);
+	position: relative;
+}
+
+.recording-dot::after {
+	content: "";
+	position: absolute;
+	inset: -4px;
+	border-radius: 50%;
+	border: 2px solid var(--color-recording);
+	animation: pulse-ring 1.5s var(--ease-out) infinite;
+}
+
+.recording-dot--active {
+	animation: recording-blink 1.5s var(--ease-in-out) infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Shimmer Loading
+   --------------------------------------------------------------------------- */
+
+.shimmer {
+	background: linear-gradient(
+		90deg,
+		var(--surface-raised) 0%,
+		var(--surface-overlay) 50%,
+		var(--surface-raised) 100%
+	);
+	background-size: 200% 100%;
+	animation: shimmer 1.8s linear infinite;
+	border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------------------------
+   Hover Micro-interactions
+   --------------------------------------------------------------------------- */
+
+.hover-lift {
+	transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.hover-lift:hover {
+	transform: translateY(-2px);
+}
+
+.hover-scale {
+	transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.hover-scale:hover {
+	transform: scale(1.03);
+}
+
+.hover-glow {
+	transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.hover-glow:hover {
+	box-shadow: var(--shadow-glow-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Transition Helpers
+   --------------------------------------------------------------------------- */
+
+.transition-all {
+	transition: all var(--duration-normal) var(--ease-out);
+}
+
+.transition-colors {
+	transition:
+		color var(--duration-fast) var(--ease-out),
+		background-color var(--duration-fast) var(--ease-out),
+		border-color var(--duration-fast) var(--ease-out);
+}
+
+.transition-transform {
+	transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.transition-opacity {
+	transition: opacity var(--duration-normal) var(--ease-out);
+}

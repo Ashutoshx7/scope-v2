@@ -1,0 +1,5 @@
+/* OpenScreen v2 — Design System Entry Point */
+@import "./tokens.css";
+@import "./glassmorphism.css";
+@import "./animations.css";
+@import "./components.css";
