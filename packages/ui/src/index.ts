@@ -1,8 +1,8 @@
 // ============================================================================
-// @openscreen/ui — Barrel Export
+// @scope/ui — Barrel Export
 //
 // All components can be imported from the root:
-//   import { TimelineEditor, VideoPreview, BackgroundPanel } from "@openscreen/ui";
+//   import { TimelineEditor, VideoPreview, BackgroundPanel } from "@scope/ui";
 // ============================================================================
 
 // Timeline Components

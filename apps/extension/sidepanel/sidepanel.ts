@@ -96,7 +96,7 @@ function render() {
 						<circle cx="12" cy="12" r="10"/>
 						<polygon points="10,8 16,12 10,16" fill="currentColor"/>
 					</svg>
-					<span>OpenScreen</span>
+					<span>Scope</span>
 				</div>
 			</header>
 
@@ -292,7 +292,7 @@ async function downloadVideo() {
 	if (!state.videoUrl) return;
 	const a = document.createElement("a");
 	a.href = state.videoUrl;
-	a.download = `openscreen-recording-${Date.now()}.webm`;
+	a.download = `scope-recording-${Date.now()}.webm`;
 	a.click();
 }
 
@@ -301,7 +301,7 @@ async function downloadAsGif() {
 	state.exportProgress = 0;
 	render();
 
-	// Simulate progress (real implementation would use GifEncoder from @openscreen/core)
+	// Simulate progress (real implementation would use GifEncoder from @scope/core)
 	const interval = setInterval(() => {
 		state.exportProgress = (state.exportProgress || 0) + Math.random() * 12 + 3;
 		if (state.exportProgress >= 100) {

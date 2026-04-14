@@ -7,7 +7,7 @@ import path from "node:path";
 import { app, dialog, ipcMain, shell } from "electron";
 import { RECORDINGS_DIR } from "../main.js";
 
-const PROJECT_FILE_EXTENSION = "openscreen";
+const PROJECT_FILE_EXTENSION = "scope";
 const ALLOWED_VIDEO_EXTENSIONS = new Set([".webm", ".mp4", ".mov", ".avi", ".mkv"]);
 
 let currentVideoPath: string | null = null;
@@ -176,7 +176,7 @@ export function registerFilesystemHandlers() {
 					title: "Save Project",
 					defaultPath: path.join(RECORDINGS_DIR, defaultName),
 					filters: [
-						{ name: "OpenScreen Project", extensions: [PROJECT_FILE_EXTENSION] },
+						{ name: "Scope Project", extensions: [PROJECT_FILE_EXTENSION] },
 						{ name: "JSON", extensions: ["json"] },
 					],
 					properties: ["createDirectory", "showOverwriteConfirmation"],
@@ -202,7 +202,7 @@ export function registerFilesystemHandlers() {
 				title: "Open Project",
 				defaultPath: RECORDINGS_DIR,
 				filters: [
-					{ name: "OpenScreen Project", extensions: [PROJECT_FILE_EXTENSION, "json"] },
+					{ name: "Scope Project", extensions: [PROJECT_FILE_EXTENSION, "json"] },
 					{ name: "All Files", extensions: ["*"] },
 				],
 				properties: ["openFile"],

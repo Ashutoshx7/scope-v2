@@ -37,7 +37,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @openscreen/core run test
+      - run: pnpm --filter @scope/core run test
 
   # -----------------------------------------------------------------------
   # Desktop — Build for all platforms
@@ -74,7 +74,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build & Package
-        run: pnpm --filter @openscreen/desktop run release
+        run: pnpm --filter @scope/desktop run release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -111,17 +111,17 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build Extension
-        run: pnpm --filter @openscreen/extension run build
+        run: pnpm --filter @scope/extension run build
 
       - name: Package as ZIP
         run: |
           cd apps/extension/dist
-          zip -r ../../../openscreen-extension-${{ github.ref_name }}.zip .
+          zip -r ../../../scope-extension-${{ github.ref_name }}.zip .
 
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         with:
-          files: openscreen-extension-${{ github.ref_name }}.zip
+          files: scope-extension-${{ github.ref_name }}.zip
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

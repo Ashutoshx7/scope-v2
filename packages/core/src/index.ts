@@ -1,9 +1,9 @@
 // ============================================================================
-// @openscreen/core — Barrel Export
+// @scope/core — Barrel Export
 //
 // All modules can be imported from the root or from sub-paths:
-//   import { ExportPipeline, createZoomRegion } from "@openscreen/core";
-//   import { StreamingVideoDecoder } from "@openscreen/core/decoder";
+//   import { ExportPipeline, createZoomRegion } from "@scope/core";
+//   import { StreamingVideoDecoder } from "@scope/core/decoder";
 // ============================================================================
 
 // Types

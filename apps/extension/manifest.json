@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "OpenScreen Recorder",
+  "name": "Scope Recorder",
   "version": "2.0.0",
   "description": "Free, open-source screen recording with a beautiful video editor. Record tabs, windows, or your entire screen.",
   "permissions": [

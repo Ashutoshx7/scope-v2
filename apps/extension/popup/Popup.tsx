@@ -74,7 +74,7 @@ function Popup() {
 			<div style={styles.header}>
 				<div style={styles.logo}>
 					<span style={styles.logoIcon}>⏺</span>
-					<span style={styles.logoText}>OpenScreen</span>
+					<span style={styles.logoText}>Scope</span>
 				</div>
 				<span style={styles.version}>v2.0</span>
 			</div>

@@ -108,7 +108,7 @@ function createEditorWindow(videoPath?: string): BrowserWindow {
 		resizable: true,
 		alwaysOnTop: false,
 		skipTaskbar: false,
-		title: "OpenScreen",
+		title: "Scope",
 		backgroundColor: "#000000",
 		show: true,
 		webPreferences: {
@@ -190,7 +190,7 @@ function getTrayIcon(filename: string, size: number) {
 
 function createTray() {
 	const iconSize = isMac ? 16 : 24;
-	tray = new Tray(getTrayIcon("openscreen.png", iconSize));
+	tray = new Tray(getTrayIcon("scope.png", iconSize));
 	tray.on("click", () => showMainWindow());
 	tray.on("double-click", () => showMainWindow());
 	updateTrayMenu();
@@ -214,7 +214,7 @@ function updateTrayMenu(recording = false) {
 			];
 
 	tray.setContextMenu(Menu.buildFromTemplate(menuTemplate));
-	tray.setToolTip(recording ? "Recording..." : "OpenScreen");
+	tray.setToolTip(recording ? "Recording..." : "Scope");
 }
 
 // ---------------------------------------------------------------------------

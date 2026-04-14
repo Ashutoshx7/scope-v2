@@ -1,4 +1,4 @@
-# OpenScreen v2
+# Scope v2
 
 > Free, open-source screen recorder & editor — as a desktop app and Chrome extension.
 
@@ -29,7 +29,7 @@
 ## 🏗️ Architecture
 
 ```
-openscreen-v2/
+scope-v2/
 ├── packages/
 │   ├── core/        ← Video engine (decoder, encoder, muxer, renderer, audio, GIF)
 │   └── ui/          ← Shared React components (timeline, preview, panels)
@@ -42,10 +42,10 @@ openscreen-v2/
 
 | Package | Lines | What It Does |
 |---|---|---|
-| `@openscreen/core` | ~5,700 | Video processing engine — zero-dependency where possible |
-| `@openscreen/ui` | ~4,650 | React components — timeline, preview, 7 panels, export dialog |
-| `@openscreen/desktop` | ~3,200 | Electron app — recording HUD, source selector, editor |
-| `@openscreen/extension` | ~1,700 | Chrome Extension — popup, offscreen recorder, side panel editor |
+| `@scope/core` | ~5,700 | Video processing engine — zero-dependency where possible |
+| `@scope/ui` | ~4,650 | React components — timeline, preview, 7 panels, export dialog |
+| `@scope/desktop` | ~3,200 | Electron app — recording HUD, source selector, editor |
+| `@scope/extension` | ~1,700 | Chrome Extension — popup, offscreen recorder, side panel editor |
 
 ---
 
@@ -59,8 +59,8 @@ openscreen-v2/
 ### Setup
 
 ```bash
-git clone https://github.com/yourname/openscreen-v2.git
-cd openscreen-v2
+git clone https://github.com/yourname/scope-v2.git
+cd scope-v2
 pnpm install
 ```
 
@@ -81,10 +81,10 @@ pnpm dev:ext
 pnpm test
 
 # Watch mode
-pnpm --filter @openscreen/core test:watch
+pnpm --filter @scope/core test:watch
 
 # With coverage
-pnpm --filter @openscreen/core test -- --coverage
+pnpm --filter @scope/core test -- --coverage
 ```
 
 ### Build
@@ -94,10 +94,10 @@ pnpm --filter @openscreen/core test -- --coverage
 pnpm build
 
 # Desktop only (unpacked)
-pnpm --filter @openscreen/desktop package
+pnpm --filter @scope/desktop package
 
 # Desktop release (installer)
-pnpm --filter @openscreen/desktop release
+pnpm --filter @scope/desktop release
 
 # Chrome extension
 pnpm build:extension
@@ -177,4 +177,4 @@ Tests use **Vitest** with V8 coverage:
 
 ## 📄 License
 
-MIT © OpenScreen Contributors
+MIT © Scope Contributors

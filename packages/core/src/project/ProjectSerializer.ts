@@ -96,7 +96,7 @@ export function deserializeProject(json: string): ProjectFile {
 		throw new Error("Invalid project file: not an object");
 	}
 
-	// Migrate from v1 format (original OpenScreen)
+	// Migrate from v1 format (original Scope)
 	if (raw.version === undefined || raw.version === 1) {
 		return migrateV1ToV2(raw);
 	}
@@ -113,7 +113,7 @@ export function deserializeProject(json: string): ProjectFile {
 // ---------------------------------------------------------------------------
 
 /**
- * Migrates a v1 (original OpenScreen) project to v2 format.
+ * Migrates a v1 (original Scope) project to v2 format.
  */
 function migrateV1ToV2(raw: Record<string, unknown>): ProjectFile {
 	const media: ProjectMedia = {

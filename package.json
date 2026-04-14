@@ -1,5 +1,5 @@
 {
-  "name": "openscreen-v2",
+  "name": "scope-v2",
   "private": true,
   "version": "2.0.0",
   "type": "module",
@@ -8,11 +8,11 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "dev": "pnpm --filter @openscreen/desktop dev",
-    "dev:ext": "pnpm --filter @openscreen/extension dev",
+    "dev": "pnpm --filter @scope/desktop dev",
+    "dev:ext": "pnpm --filter @scope/extension dev",
     "build": "pnpm -r build",
-    "build:desktop": "pnpm --filter @openscreen/desktop build",
-    "build:extension": "pnpm --filter @openscreen/extension build",
+    "build:desktop": "pnpm --filter @scope/desktop build",
+    "build:extension": "pnpm --filter @scope/extension build",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",

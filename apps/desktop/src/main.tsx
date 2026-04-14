@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@openscreen/ui/styles";
+import "@scope/ui/styles";
 import "./index.css";
 import App from "./App";
 

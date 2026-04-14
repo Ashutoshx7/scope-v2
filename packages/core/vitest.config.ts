@@ -19,7 +19,7 @@ export default defineConfig({
 		},
 		testTimeout: 10000,
 		alias: {
-			"@openscreen/core": new URL("./src/index.ts", import.meta.url).pathname,
+			"@scope/core": new URL("./src/index.ts", import.meta.url).pathname,
 		},
 	},
 });

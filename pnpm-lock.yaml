@@ -23,10 +23,10 @@ importers:
       '@fix-webm-duration/fix':
         specifier: ^1.0.1
         version: 1.0.1
-      '@openscreen/core':
+      '@scope/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@openscreen/ui':
+      '@scope/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       lucide-react:
@@ -99,10 +99,10 @@ importers:
 
   apps/extension:
     dependencies:
-      '@openscreen/core':
+      '@scope/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@openscreen/ui':
+      '@scope/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       lucide-react:
@@ -152,7 +152,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@openscreen/core':
+      '@scope/core':
         specifier: workspace:*
         version: link:../core
       lucide-react:

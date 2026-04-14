@@ -1,7 +1,7 @@
 // ============================================================================
 // VideoPreview — Real-time composited video preview in the editor
 //
-// Uses FrameRenderer from @openscreen/core to render frames with all
+// Uses FrameRenderer from @scope/core to render frames with all
 // effects (zoom, crop, annotations, webcam overlay) in real-time.
 // ============================================================================
 

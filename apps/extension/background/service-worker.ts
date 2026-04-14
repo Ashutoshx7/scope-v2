@@ -266,21 +266,21 @@ function broadcastState() {
 
 chrome.runtime.onInstalled.addListener(() => {
 	chrome.contextMenus?.create({
-		id: "openscreen-record-tab",
+		id: "scope-record-tab",
 		title: "Record this tab",
 		contexts: ["page"],
 	});
 	chrome.contextMenus?.create({
-		id: "openscreen-record-screen",
+		id: "scope-record-screen",
 		title: "Record screen",
 		contexts: ["page"],
 	});
 });
 
 chrome.contextMenus?.onClicked?.addListener((info) => {
-	if (info.menuItemId === "openscreen-record-tab") {
+	if (info.menuItemId === "scope-record-tab") {
 		startTabCapture();
-	} else if (info.menuItemId === "openscreen-record-screen") {
+	} else if (info.menuItemId === "scope-record-screen") {
 		startDesktopCapture();
 	}
 });

@@ -39,7 +39,7 @@ export default function App() {
 					background: "var(--surface-base)",
 					color: "var(--text-primary)",
 				}}>
-					<div className="animate-pulse">Loading OpenScreen...</div>
+					<div className="animate-pulse">Loading Scope...</div>
 				</div>
 			);
 	}

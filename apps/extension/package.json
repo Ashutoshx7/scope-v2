@@ -1,5 +1,5 @@
 {
-  "name": "@openscreen/extension",
+  "name": "@scope/extension",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -9,8 +9,8 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "@openscreen/core": "workspace:*",
-    "@openscreen/ui": "workspace:*",
+    "@scope/core": "workspace:*",
+    "@scope/ui": "workspace:*",
     "lucide-react": "^0.545.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
