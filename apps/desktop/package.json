@@ -1,0 +1,50 @@
+{
+  "name": "@openscreen/desktop",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "package": "tsc && vite build && electron-builder --dir",
+    "release": "tsc && vite build && electron-builder",
+    "build:mac": "tsc && vite build && electron-builder --mac",
+    "build:win": "tsc && vite build && electron-builder --win",
+    "build:linux": "tsc && vite build && electron-builder --linux AppImage deb",
+    "preview": "vite preview",
+    "lint": "biome check .",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@openscreen/core": "workspace:*",
+    "@openscreen/ui": "workspace:*",
+    "@fix-webm-duration/fix": "^1.0.1",
+    "lucide-react": "^0.545.0",
+    "motion": "^12.23.24",
+    "mp4box": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-resizable-panels": "^3.0.6",
+    "sonner": "^2.0.7",
+    "uuid": "^13.0.0",
+    "web-demuxer": "^4.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.13",
+    "@types/node": "^25.0.3",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.7.0",
+    "typescript": "^5.7.0",
+    "vite": "^5.1.6",
+    "vite-plugin-electron": "^0.28.6",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vitest": "^4.0.16"
+  },
+  "main": "dist-electron/main.js"
+}
