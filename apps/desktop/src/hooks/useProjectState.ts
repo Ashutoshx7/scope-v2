@@ -64,7 +64,8 @@ export interface ProjectState {
 
 	// Background
 	backgroundValue: string;
-	backgroundType: "wallpaper" | "gradient" | "solid" | "custom";
+	backgroundType: "wallpaper" | "gradient" | "solid" | "custom" | "image";
+	customBgUrl: string | null;
 
 	// Timeline regions
 	zoomRegions: ZoomRegionState[];
@@ -150,7 +151,8 @@ type ProjectAction =
 	| { type: "SET_SIDEBAR_TAB"; tab: SidebarTab }
 
 	// Background
-	| { type: "SET_BACKGROUND"; value: string; bgType: "wallpaper" | "gradient" | "solid" | "custom" }
+	| { type: "SET_BACKGROUND"; value: string; bgType: "wallpaper" | "gradient" | "solid" | "custom" | "image" }
+	| { type: "SET_CUSTOM_BG"; url: string }
 
 	// Zoom
 	| { type: "ADD_ZOOM_REGION"; region: ZoomRegionState }
@@ -238,6 +240,7 @@ const initialProjectState: ProjectState = {
 	activeSidebarTab: "background",
 	backgroundValue: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
 	backgroundType: "gradient",
+	customBgUrl: null,
 	zoomRegions: [],
 	trimRegions: [],
 	speedRegions: [],
@@ -331,6 +334,8 @@ function projectReducer(state: ProjectState, action: ProjectAction): ProjectStat
 		// Background
 		case "SET_BACKGROUND":
 			return markDirty({ ...state, backgroundValue: action.value, backgroundType: action.bgType });
+		case "SET_CUSTOM_BG":
+			return { ...state, customBgUrl: action.url };
 
 		// Zoom regions
 		case "ADD_ZOOM_REGION":
